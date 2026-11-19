@@ -1,0 +1,3 @@
+# Keep Linux line endings so Dockerfiles, nginx config and scripts behave the same on Render, Vercel and Windows.
+* text=auto eol=lf
+*.svg text eol=lf

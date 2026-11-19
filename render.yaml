@@ -1,0 +1,19 @@
+# Render Blueprint: deploys the Express API as a Docker container on the free plan.
+# In Render: New → Blueprint → pick this GitHub repo. You'll be asked for the values marked sync: false.
+services:
+  - type: web
+    name: portfolio-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./server/Dockerfile
+    dockerContext: ./server
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGODB_URI
+        sync: false # your MongoDB Atlas connection string
+      - key: ADMIN_PASSWORD
+        sync: false # password for /admin
+      - key: CLIENT_ORIGIN
+        sync: false # your Vercel URL, e.g. https://your-name.vercel.app
+      - key: JWT_SECRET
+        generateValue: true
